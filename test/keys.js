@@ -1,16 +1,16 @@
 var test = require("tape")
 
-var h = require("../h.js")
-var diff = require("../diff.js")
-var patch = require("../patch.js")
-var render = require("../create-element.js")
+var h = require("../h")
+var diff = require("../diff")
+var patch = require("../patch")
+var render = require("../create-element")
 
-var patchCount = require("./lib/patch-count.js")
-var assertEqualDom = require("./lib/assert-equal-dom.js")
-var nodesFromArray = require("./lib/nodes-from-array.js")
-var assertChildNodesFromArray = require("./lib/assert-childNodes-from-array.js")
+var patchCount = require("./lib/patch-count")
+var assertEqualDom = require("./lib/assert-equal-dom")
+var nodesFromArray = require("./lib/nodes-from-array")
+var assertChildNodesFromArray = require("./lib/assert-childNodes-from-array")
 
-var VPatch = require("../vnode/vpatch.js")
+var VPatch = require("../vnode/vpatch")
 
 test("keys get reordered", function (assert) {
     var leftNode = nodesFromArray(["1", "2", "3", "4", "test", "6", "good", "7"])
@@ -678,7 +678,7 @@ automateTests({
 })
 
 function addKeyed(list) {
-    list.push(('' + Math.random()).substring(2))
+    list.push(('' + Math.random()).slice(2))
 
     return list
 }

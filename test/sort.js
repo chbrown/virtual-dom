@@ -24,12 +24,12 @@ var SAMPLE_END = 1000;
 var SAMPLE_COUNT = 100;
 var SAMPLE_INTERVAL = 10;
 
-var nodesFromArray = require('./lib/nodes-from-array.js');
-var assertChildNodesFromArray = require('./lib/assert-childNodes-from-array.js');
+var nodesFromArray = require('./lib/nodes-from-array');
+var assertChildNodesFromArray = require('./lib/assert-childNodes-from-array');
 
 var diff = require('../vtree/diff');
-var render = require('../create-element.js');
-var patch = require('../patch.js');
+var render = require('../create-element');
+var patch = require('../patch');
 
 var assert = require('assert');
 

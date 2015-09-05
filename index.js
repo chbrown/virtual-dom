@@ -1,9 +1,9 @@
-var diff = require("./diff.js")
-var patch = require("./patch.js")
-var h = require("./h.js")
-var create = require("./create-element.js")
-var VNode = require('./vnode/vnode.js')
-var VText = require('./vnode/vtext.js')
+var diff = require("./vtree/diff")
+var patch = require("./vdom/patch")
+var h = require("./virtual-hyperscript/index")
+var create = require("./vdom/create-element")
+var VNode = require('./vnode/vnode')
+var VText = require('./vnode/vtext')
 
 module.exports = {
     diff: diff,

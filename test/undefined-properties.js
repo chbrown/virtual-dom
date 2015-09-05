@@ -1,10 +1,10 @@
 var test = require("tape")
 var isObject = require("is-object")
 
-var h = require("../h.js")
-var diff = require("../diff.js")
-var patch = require("../patch.js")
-var render = require("../create-element.js")
+var h = require("../h")
+var diff = require("../diff")
+var patch = require("../patch")
+var render = require("../create-element")
 
 test("undefined props are not set in create-element", function (assert) {
     var node = h("div", { special: undefined })

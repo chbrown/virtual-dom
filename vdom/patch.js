@@ -1,78 +1,78 @@
-var document = require("global/document")
-var isArray = require("x-is-array")
+var document = require('global/document');
 
-var render = require("./create-element")
-var domIndex = require("./dom-index")
-var patchOp = require("./patch-op")
-module.exports = patch
+var render = require('./create-element');
+var domIndex = require('./dom-index');
+var patchOp = require('./patch-op');
+module.exports = patch;
 
 function patch(rootNode, patches, renderOptions) {
-    renderOptions = renderOptions || {}
-    renderOptions.patch = renderOptions.patch || patchRecursive
-    renderOptions.render = renderOptions.render || render
+  renderOptions = renderOptions || {};
+  renderOptions.patch = renderOptions.patch || patchRecursive;
+  renderOptions.render = renderOptions.render || render;
 
-    return renderOptions.patch(rootNode, patches, renderOptions)
+  return renderOptions.patch(rootNode, patches, renderOptions);
 }
 
 function patchRecursive(rootNode, patches, renderOptions) {
-    var indices = patchIndices(patches)
+  var indices = patchIndices(patches);
 
-    if (indices.length === 0) {
-        return rootNode
-    }
+  if (indices.length === 0) {
+    return rootNode;
+  }
 
-    var index = domIndex(rootNode, patches.a, indices)
-    var ownerDocument = rootNode.ownerDocument
+  var index = domIndex(rootNode, patches.a, indices);
+  var ownerDocument = rootNode.ownerDocument;
 
-    if (!renderOptions.document && ownerDocument !== document) {
-        renderOptions.document = ownerDocument
-    }
+  if (!renderOptions.document && ownerDocument !== document) {
+    renderOptions.document = ownerDocument;
+  }
 
-    for (var i = 0; i < indices.length; i++) {
-        var nodeIndex = indices[i]
-        rootNode = applyPatch(rootNode,
-            index[nodeIndex],
-            patches[nodeIndex],
-            renderOptions)
-    }
+  for (var i = 0; i < indices.length; i++) {
+    var nodeIndex = indices[i];
+    rootNode = applyPatch(rootNode,
+      index[nodeIndex],
+      patches[nodeIndex],
+      renderOptions);
+  }
 
-    return rootNode
+  return rootNode;
 }
 
 function applyPatch(rootNode, domNode, patchList, renderOptions) {
-    if (!domNode) {
-        return rootNode
+  if (!domNode) {
+    return rootNode;
+  }
+
+  var newNode;
+
+  if (Array.isArray(patchList)) {
+    for (var i = 0; i < patchList.length; i++) {
+      newNode = patchOp(patchList[i], domNode, renderOptions);
+
+      if (domNode === rootNode) {
+        rootNode = newNode;
+      }
     }
+  }
+  else {
+    newNode = patchOp(patchList, domNode, renderOptions);
 
-    var newNode
-
-    if (isArray(patchList)) {
-        for (var i = 0; i < patchList.length; i++) {
-            newNode = patchOp(patchList[i], domNode, renderOptions)
-
-            if (domNode === rootNode) {
-                rootNode = newNode
-            }
-        }
-    } else {
-        newNode = patchOp(patchList, domNode, renderOptions)
-
-        if (domNode === rootNode) {
-            rootNode = newNode
-        }
+    if (domNode === rootNode) {
+      rootNode = newNode;
     }
+  }
 
-    return rootNode
+  return rootNode;
 }
 
 function patchIndices(patches) {
-    var indices = []
+  var indices = [];
 
-    for (var key in patches) {
-        if (key !== "a") {
-            indices.push(Number(key))
-        }
+  for (var key in patches) {
+    if (key !== 'a') {
+      indices.push(Number(key));
     }
+  }
 
-    return indices
+  return indices;
 }

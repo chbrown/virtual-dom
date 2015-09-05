@@ -1,14 +1,14 @@
 var test = require("tape")
 
-var h = require("../h.js")
-var diff = require("../diff.js")
-var patch = require("../patch.js")
-var render = require("../create-element.js")
+var h = require("../h")
+var diff = require("../diff")
+var patch = require("../patch")
+var render = require("../create-element")
 var Node = require("../vnode/vnode")
 var TextNode = require("../vnode/vtext")
 var version = require("../vnode/version")
-var assertEqualDom = require("./lib/assert-equal-dom.js")
-var patchCount = require("./lib/patch-count.js")
+var assertEqualDom = require("./lib/assert-equal-dom")
+var patchCount = require("./lib/patch-count")
 
 
 

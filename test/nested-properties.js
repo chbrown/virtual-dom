@@ -1,10 +1,10 @@
 var test = require("tape")
 
-var h = require("../h.js")
-var diff = require("../diff.js")
-var patch = require("../patch.js")
-var render = require("../create-element.js")
-var assertEqualDom = require("./lib/assert-equal-dom.js")
+var h = require("../h")
+var diff = require("../diff")
+var patch = require("../patch")
+var render = require("../create-element")
+var assertEqualDom = require("./lib/assert-equal-dom")
 
 test("dom node style", function (assert) {
     var a = h("div", {

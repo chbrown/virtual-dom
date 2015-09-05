@@ -1,4 +1,4 @@
-var h = require("../../h.js")
+var h = require("../../h")
 
 module.exports = nodesFromArray
 

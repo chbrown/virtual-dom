@@ -1,11 +1,11 @@
 var test = require("tape")
 
-var h = require("../h.js")
-var Node = require("../vnode/vnode.js")
-var create = require("../create-element.js")
-var diff = require("../diff.js")
-var patch = require("../patch.js")
-var patchCount = require("./lib/patch-count.js")
+var h = require("../h")
+var Node = require("../vnode/vnode")
+var create = require("../create-element")
+var diff = require("../diff")
+var patch = require("../patch")
+var patchCount = require("./lib/patch-count")
 
 test("Stateful hooks are added to a hooks object on a node", function (assert) {
     function StatefulHook() {}

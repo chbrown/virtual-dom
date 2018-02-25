@@ -221,7 +221,7 @@ virtual-dom is heavily inspired by the inner workings of React by facebook. This
 [1]: https://secure.travis-ci.org/Matt-Esch/virtual-dom.svg
 [2]: https://travis-ci.org/Matt-Esch/virtual-dom
 [3]: https://badge.fury.io/js/virtual-dom.svg
-[4]: https://badge.fury.io/js/virtual-dom
+[4]: https://www.npmjs.com/package/virtual-dom
 [5]: http://img.shields.io/coveralls/Matt-Esch/virtual-dom.svg
 [6]: https://coveralls.io/r/Matt-Esch/virtual-dom
 [7]: https://david-dm.org/Matt-Esch/virtual-dom.svg
